@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css" href="{% static 'user_app/style.css' %}">
+    <title>Twiter</title>
+</head>
+<body>
+    <div class="wrapper">
+    <header class="Header">
+        <img src="{% static 'user_app/images/tweet.JPG' %}">
+        <div class="text" ><p> <a href="/profile">Profile</a></p>
+         
+          
+</div>
+    </header>
+        
+
+    <div class="navbar">
+        <a href="/home">Home</a>
+        <a href="{% url 'user_app:logout' %}">Log Out</a>
+
+        <div class="dropdown">
+       
+          <button class="dropbtn">Dropdown 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div> 
+      </div>
+    
+    <div class="flexbox-item-continer">
+        <!-- <div -->
+    <main class="flexbox-item flex1">
+        <h1>Home</h1>
+
+        <hr>
+      
+        <ul>
+            {% for tweet in tweets %}
+            <li>
+              User: {{tweet.user}} <br> 
+              Tweet: {{ tweet.message }}<br>
+              Posted at: {{ tweet.created_at}}<br>
+              Likes: 
+              {{tweet.likes}}
+              
+              
+              {%endfor%}
+            </li>
+          </ul>
+        
+         </main>
+
+    <aside class="flexbox-item flex2">
+      <h3>
+        {{ request.user.username }}
+    </h3>
+    <br>
+        <ul>
+            <form action="{% url 'posts:create_chirp' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="message" placeholder="Add new tweet"/><br>
+                
+    
+                <button type="submit" class="tweet">Send</button>
+            </form>
+          </ul>
+    </aside>
+    
+
+    <aside class="flexbox-item flex3">
+     
+  
+    </aside>
+    </div>
+
+</div>
+
+
+
+
+</body>
+</html>

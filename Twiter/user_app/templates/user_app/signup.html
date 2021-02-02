@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css" href="{% static 'user_app/style.css' %}">
+    <title>Twiter</title>
+</head>
+<body>
+    <div class="wrapper">
+    <header class="Header">
+    <img src="{% static 'user_app/images/twitter.png' %}">
+    </header>
+        
+
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="#news">News</a>
+        <div class="dropdown">
+          <button class="dropbtn">Dropdown 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div> 
+      </div>
+    
+    <div class="flexbox-item-continer">
+        <!-- <div -->
+    <main class="flexbox-item flex1">
+      
+
+        <h1>Signup</h1>
+  
+        <form action="{% url 'user_app:register' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" required placeholder="username" />
+            <input type="password" name="password" required placeholder="password" />
+            <input type="email" name="email" required placeholder="email" />
+            <button type="submit">Sign up</button>
+        </form>
+        <ul>
+            <li>
+               <a href="/">Login</a>
+            </li>
+        </ul>
+    </main>
+        <!-- </div> -->
+        <!-- <div> -->
+    <!-- <aside class="flexbox-item flex2">
+        <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">Intro</a></li>
+        </ul>
+    </aside> -->
+    
+
+    <!-- <aside class="flexbox-item flex3">
+        <h4>
+            twits
+        </h4>
+    </aside> -->
+    </div>
+
+</div>
+
+
+
+
+</body>
+</html>
